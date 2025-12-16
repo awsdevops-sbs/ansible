@@ -10,7 +10,7 @@
      - name: Install PyMySQL python package
        ansible.builtin.pip:
          name: PyMySQL
-         executable: pip3
+         executable: pip3.9
 
      -  name: Start mysql server
         ansible.builtin.systemd_service:
