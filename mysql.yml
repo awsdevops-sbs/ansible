@@ -18,12 +18,6 @@
           enabled: yes
           state: started
 
-     - name: Check the DB connection with our password
-       community.mysql.mysql_info:
-         login_host: mysql-dev.awsdevops.sbs
-         login_user: root
-         login_password: ExpenseApp@1
-         filter: version
 
      - name: connect mysql connection
        ansible.builtin.shell: mysql_secure_installation --set-root-pass ExpenseApp@1
