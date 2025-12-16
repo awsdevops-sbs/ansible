@@ -40,10 +40,15 @@
        src: backend.service
        dest: /etc/systemd/system/backend.service
 
-   - name: Update packages based on package.json to their latest version.
+   - name: Install NPM.
      community.general.npm:
        path: /app
        state: latest
+
+   - name: Install PyMySQL python package
+     ansible.builtin.pip:
+       name: PyMySQL
+       executable: pip3.9
 
    - name: Install Mysql Client
      ansible.builtin.dnf:
