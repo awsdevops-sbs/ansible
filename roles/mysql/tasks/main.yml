@@ -16,7 +16,7 @@
        - cryptography
      executable: pip3.9
 
--  name: Load Schema
+-  name: Check the DB connection with our password
    community.mysql.mysql_info:
      login_user: root
      login_password: "{{mysql_password}}"
