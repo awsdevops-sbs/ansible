@@ -1,8 +1,8 @@
--  name: Mysql setup
+-  name: expense setup
    hosts: all
    become: yes
    roles:
-     - mysql
+     -" {{ role_name }} "
 
 #Print_Task_Heading "Connect Mysql server"
 #echo 'show databases' | mysql -h mysql-dev.awsdevops.sbs -uroot -p${mysql_password} &>>$Log
