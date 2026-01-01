@@ -22,7 +22,7 @@ pipelines:
                     arguments:
                       - ansible.sh
                       - frontend
-                    command: bash
+                    command: sudo bash
                     run_if: passed
 
       - QA:
@@ -54,7 +54,7 @@ pipelines:
                     arguments:
                       - ansible.sh
                       - frontend
-                    command: bash
+                    command: sudo bash
                     run_if: passed
 
       - PROD:
