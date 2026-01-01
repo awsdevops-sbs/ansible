@@ -19,56 +19,8 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                  - pwd
-                  - ls -l ansible.sh
+                  - ansible.sh
                   - frontend
                 command: bash
                 run_if: passed
 
-      - QA:
-          fetch_materials: true
-          approval:
-            type: manual
-            allow_only_on_success: false
-          jobs:
-            ansible-playbook:
-              timeout: 0
-              tasks:
-                - exec:
-                    arguments:
-                      - ansible.sh
-                      - frontend
-                    command: bash
-                    run_if: passed
-
-      - UAT:
-          fetch_materials: true
-          approval:
-            type: manual
-            allow_only_on_success: false
-          jobs:
-            ansible-playbook:
-              timeout: 0
-              tasks:
-                - exec:
-                    arguments:
-                      - ansible.sh
-                      - frontend
-                    command: bash
-                    run_if: passed
-
-      - PROD:
-          fetch_materials: true
-          approval:
-            type: manual
-            allow_only_on_success: false
-          jobs:
-            ansible-playbook:
-              timeout: 0
-              tasks:
-                - exec:
-                    arguments:
-                      - ansible.sh
-                      - frontend
-                    command: bash
-                    run_if: passed
