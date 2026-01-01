@@ -1,6 +1,3 @@
 - name: Set prompt with component
   ansible.builtin.shell: set-prompt {{ component }} - {{ env }}
 
-- name: Force Ansible to use Python 3.9
-  ansible.builtin.set_fact:
-   ansible_python_interpreter: /usr/bin/python3.9
