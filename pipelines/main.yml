@@ -1,0 +1,25 @@
+format_version: 10
+pipelines:
+  frontend:
+    materials:
+      git-5766e3f:
+        git: https://github.com/awsdevops-sbs/ansible.git
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+      - Dev:
+          fetch_materials: true
+          approval:
+            type: manual
+            allow_only_on_success: false
+          jobs:
+            ansible-playbook:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - ansible.sh
+                      - frontend
+                    command: bash
+                    run_if: passed
