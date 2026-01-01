@@ -1,6 +1,4 @@
-  - name: Force Ansible to use Python 3.9
-    ansible.builtin.set_fact:
-     ansible_python_interpreter: /usr/bin/python3.9
+
 
   - name: Install Mysql Server
     ansible.builtin.dnf:
