@@ -9,21 +9,20 @@ pipelines:
         auto_update: true
         branch: main
     stages:
-      - Dev:
-          fetch_materials: true
-          approval:
-            type: manual
-            allow_only_on_success: false
-          jobs:
-            ansible-playbook:
-              timeout: 0
-              tasks:
-                - exec:
-                    arguments:
-                      - ansible.sh
-                      - frontend
-                    command: bash
-                    run_if: passed
+    - Dev:
+        fetch_materials: true
+        approval:
+          type: manual
+          allow_only_on_success: false
+        jobs:
+          ansible-playbook:
+            tasks:
+            - exec:
+                arguments:
+                  - ansible.sh
+                  - frontend
+                command: bash
+                run_if: passed
 
       - QA:
           fetch_materials: true
