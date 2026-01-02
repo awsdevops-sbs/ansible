@@ -10,4 +10,5 @@ ansible-playbook -i "$component-$env.awsdevops.sbs," \
   -e ansible_password=DevOps321 \
   -e role_name="$component" \
   -e env=$env \
+  -e mysql_password=ExpenseApp@1
   expense.yml
