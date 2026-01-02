@@ -11,6 +11,8 @@ pipelines:
     stages:
     - Dev:
         fetch_materials: true
+        environment_variables:
+          ENV: dev
         approval:
           type: manual
           allow_only_on_success: false
@@ -26,8 +28,10 @@ pipelines:
 
     - QA:
         fetch_materials: true
+        environment_variables:
+          ENV: qa
         approval:
-          type: success
+          type: manual
           allow_only_on_success: false
         jobs:
           ansible-playbook:
@@ -41,6 +45,8 @@ pipelines:
 
     - UAT:
         fetch_materials: true
+        environment_variables:
+          ENV: UAT
         approval:
           type: manual
           allow_only_on_success: false
@@ -56,6 +62,8 @@ pipelines:
 
     - PROD:
         fetch_materials: true
+        environment_variables:
+          ENV: prod
         approval:
           type: manual
           allow_only_on_success: false
