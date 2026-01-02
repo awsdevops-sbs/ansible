@@ -27,7 +27,7 @@ pipelines:
     - QA:
         fetch_materials: true
         approval:
-          type: manual
+          type: success
           allow_only_on_success: false
         jobs:
           ansible-playbook:
