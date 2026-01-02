@@ -1,4 +1,3 @@
-export ANSIBLE_HOST_KEY_CHECKING=False
 component=$1
 ansible-playbook -i "$component-dev.awsdevops.sbs," \
   -e ansible_user=ec2-user \
