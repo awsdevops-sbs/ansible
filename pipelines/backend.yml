@@ -1,0 +1,79 @@
+format_version: 10
+pipelines:
+  backend:
+    group: defaultGroup
+    materials:
+      git-5766e3f:
+        git: https://github.com/awsdevops-sbs/ansible.git
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+      - Dev:
+          fetch_materials: true
+          environment_variables:
+            env: dev
+          approval:
+            type: manual
+            allow_only_on_success: false
+          jobs:
+            ansible-playbook:
+              tasks:
+                - exec:
+                    arguments:
+                      - ansible.sh
+                      - backend
+                    command: bash
+                    run_if: passed
+
+      - QA:
+          fetch_materials: true
+          environment_variables:
+            env: qa
+          approval:
+            type: manual
+            allow_only_on_success: false
+          jobs:
+            ansible-playbook:
+              tasks:
+                - exec:
+                    arguments:
+                      - ansible.sh
+                      - backend
+                    command: bash
+                    run_if: passed
+
+      - UAT:
+          fetch_materials: true
+          environment_variables:
+            env: UAT
+          approval:
+            type: manual
+            allow_only_on_success: false
+          jobs:
+            ansible-playbook:
+              tasks:
+                - exec:
+                    arguments:
+                      - ansible.sh
+                      - backend
+                    command: bash
+                    run_if: passed
+
+      - PROD:
+          fetch_materials: true
+          environment_variables:
+            env: prod
+          approval:
+            type: manual
+            allow_only_on_success: false
+          jobs:
+            ansible-playbook:
+              tasks:
+                - exec:
+                    arguments:
+                      - ansible.sh
+                      - backend
+                    command: bash
+                    run_if: passed
+

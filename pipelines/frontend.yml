@@ -12,7 +12,7 @@ pipelines:
     - Dev:
         fetch_materials: true
         environment_variables:
-          ENV: dev
+          env: dev
         approval:
           type: manual
           allow_only_on_success: false
@@ -29,7 +29,7 @@ pipelines:
     - QA:
         fetch_materials: true
         environment_variables:
-          ENV: qa
+          env: qa
         approval:
           type: manual
           allow_only_on_success: false
@@ -46,7 +46,7 @@ pipelines:
     - UAT:
         fetch_materials: true
         environment_variables:
-          ENV: UAT
+          env: UAT
         approval:
           type: manual
           allow_only_on_success: false
@@ -63,7 +63,7 @@ pipelines:
     - PROD:
         fetch_materials: true
         environment_variables:
-          ENV: prod
+          env: prod
         approval:
           type: manual
           allow_only_on_success: false
