@@ -14,8 +14,14 @@
        name: common
        tasks_from: app-pre-req
 
+#  -  name: Enable and restart Nginx service
+#     ansible.builtin.service:
+#       name: nginx
+#       enabled: true
+#       state: started
+
   -  name: Enable and restart Nginx service
-     ansible.builtin.service:
-       name: nginx
-       enabled: true
+     ansible.builtin.systemd_service:
        state: restarted
+       name: nginx
+       enabled: yes
