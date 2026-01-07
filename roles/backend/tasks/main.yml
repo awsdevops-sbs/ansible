@@ -56,7 +56,8 @@
     name: all
     target: /app/schema/backend.sql
     login_user: root
-    login_password: "{{ mysql_password }}"
+    login_password: ExpenseApp@1
+    #login_password: "{{ mysql_password }}"
     login_host: mysql-dev.awsdevops.sbs
 
 - name: Start backend service
