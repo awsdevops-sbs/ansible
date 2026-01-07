@@ -3,7 +3,7 @@
        name: nginx
        state: present
 
-  -  name: nginx config
+  -  name: Copy nginx config file
      ansible.builtin.template:
        src: nginx.conf
        dest: /etc/nginx/nginx.conf
@@ -20,7 +20,7 @@
        tasks_from: app-pre-req
 
   -  name: Enable and restart Nginx service
-     ansible.builtin.service:
+     ansible.builtin.systemd_service:
        name: nginx
        enabled: true
        state: restarted
