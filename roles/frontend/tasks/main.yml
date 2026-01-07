@@ -1,7 +1,12 @@
   -  name: Install nginx
      ansible.builtin.dnf:
        name: nginx
-       state: latest
+       state: present
+
+  -  name: nginx config
+     ansible.builtin.template:
+       src: nginx.conf
+       dest: /etc/nginx/nginx.conf
 
   -  name: Copy Expense config
      ansible.builtin.template:
