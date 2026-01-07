@@ -19,6 +19,17 @@
        name: common
        tasks_from: app-pre-req
 
+  -   name: Validate nginx configuration
+      ansible.builtin.command: nginx -t
+      register: nginx_test
+      changed_when: false
+      failed_when: false
+
+  -  name: Print nginx config error
+     ansible.builtin.debug:
+       msg: "{{ nginx_test.stderr }}"
+     when: nginx_test.rc != 0
+
   -  name: Enable and restart Nginx service
      ansible.builtin.systemd_service:
        name: nginx
