@@ -1,0 +1,26 @@
+-  name: Set Prompt
+   ansible.builtin.shell: set-prompt {{ component }} - {{ env }}
+
+-  name: Force Ansible to use Python 3.9
+   ansible.builtin.set_fact:
+     ansible_python_interpreter: /usr/bin/python3.9
+
+
+-  name: Download and extract the prometheus content
+   ansible.builtin.unarchive:
+     src: https://github.com/prometheus/node_exporter/releases/download/v{{ version }}/node_exporter-{{ version }}.linux-amd64.tar.gz
+     dest: /opt
+     remote_src: yes
+     owner: bin
+
+-  name: Copy node_exporter service file
+   ansible.builtin.template:
+     src: node_exporter.service
+     dest: /etc/systemd/system/node_exporter.service
+
+-  name: Start node_exporter service
+   ansible.builtin.systemd_service:
+     state: restarted
+     daemon_reload: true
+     name: node_exporter
+     enabled: yes
