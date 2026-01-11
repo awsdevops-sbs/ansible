@@ -17,14 +17,14 @@
 
 
 
-  -  name: Enable and restart Nginx service
-     ansible.builtin.systemd_service:
-       name: nginx
-       enabled: true
-       state: restarted
-
 #  -  name: Enable and restart Nginx service
 #     ansible.builtin.systemd_service:
-#       state: started
 #       name: nginx
-#       enabled: yes
+#       enabled: true
+#       state: restarted
+
+  -  name: Enable and restart Nginx service
+     ansible.builtin.systemd_service:
+       state: started
+       name: nginx
+       enabled: yes
