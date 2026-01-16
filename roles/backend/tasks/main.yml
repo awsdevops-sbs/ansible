@@ -52,7 +52,7 @@
 - name: Load Schema
   community.mysql.mysql_db:
     state: import
-    name: backend_db
+    name: all
     target: /app/schema/backend.sql
     login_user: root
     login_password: ExpenseApp@1
