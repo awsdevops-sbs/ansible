@@ -14,11 +14,18 @@
        dest: /etc/nginx/default.d/expense.conf
 
 
+
+
   -  name: Import App pre-requisties
      ansible.builtin.import_role:
        name: common
        tasks_from: app-pre-req
 
+
+  -  name: Import App pre-requisties
+     ansible.builtin.import_role:
+       name: newrelic
+       tasks_from: nginx
 
 
 #  -  name: Enable and restart Nginx service
