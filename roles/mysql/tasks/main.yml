@@ -28,7 +28,7 @@
     login_host: mysql-dev.awsdevops.sbs
     filter: version
   register: mysql_connection_output
-  #ignore_errors: yes
+  ignore_errors: yes
 
 - name: set up mysql password
   ansible.builtin.shell: mysql_secure_installation --set-root-pass ExpenseApp@1
