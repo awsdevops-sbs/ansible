@@ -19,12 +19,6 @@
   ansible.builtin.user:
     name: expense
 
-
-- name: Copy Backend service file
-  ansible.builtin.template:
-    src: backend.service
-    dest: /etc/systemd/system/backend.service
-
 - name: Import App pre-requisties
   ansible.builtin.import_role:
     name: common
@@ -34,6 +28,14 @@
   community.general.npm:
     path: "{{ app_loc }}"
     state: latest
+
+
+- name: Copy Backend service file
+  ansible.builtin.template:
+    src: backend.service
+    dest: /etc/systemd/system/backend.service
+
+
 
 - name: Install PyMySQL python package
   ansible.builtin.pip:
