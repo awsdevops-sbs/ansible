@@ -3,14 +3,11 @@
      ansible_python_interpreter: /usr/bin/python3.9
 
 
-
-
 -  name: Disable default Nodejs version
    ansible.builtin.shell: dnf module disable nodejs -y
 
 -  name: Enable nodejs module for v20
    ansible.builtin.shell: dnf module enable nodejs:20 -y
-
 
 
 -  name: Install NodeJS
