@@ -8,7 +8,7 @@
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
 
-  -  name: Copy Expense configuration
+  -  name: Copy Expense config
      ansible.builtin.template:
        src: expense.conf
        dest: /etc/nginx/default.d/expense.conf
@@ -19,10 +19,7 @@
        name: common
        tasks_from: app-pre-req
 
-  - name: Import App pre-requisties
-    ansible.builtin.import_role:
-      name: newrelic
-      tasks_from: nginx
+
 
 #  -  name: Enable and restart Nginx service
 #     ansible.builtin.systemd_service:
