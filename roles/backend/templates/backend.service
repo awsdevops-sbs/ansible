@@ -5,7 +5,7 @@ Description = Backend Service
 User=expense
 Environment=DB_HOST="mysql-{{ env }}.awsdevops.sbs"
 Environment=NEW_RELIC_APP_NAME=backend
-Environment=NEW_RELIC_LICENSE_KEY=3e2cc12a37ca9589665d69ef7c4f9917FFFFNRAL
+Environment=NEW_RELIC_LICENSE_KEY=3a7f2af24643c2860a07a642bbdf3e6cFFFFNRAL
 ExecStart=/bin/node -r newrelic /app/index.js
 SyslogIdentifier=backend
 
