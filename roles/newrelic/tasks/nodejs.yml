@@ -1,2 +1,4 @@
--  name: Install newrelic for nodejs app
-   ansible.builtin.shell:
+- name: Install npm newrelic package.
+  community.general.npm:
+    name: newrelic
+    path: /app
