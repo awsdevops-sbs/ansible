@@ -23,7 +23,7 @@
 - name: Import nodejs role for newrelic
   ansible.builtin.import_role:
     name: newrelic
-    tasks_from: nodejs.yml
+    tasks_from: nodejs
 
 
 - name: Import App pre-requisties
