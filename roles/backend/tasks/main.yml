@@ -19,6 +19,13 @@
   ansible.builtin.user:
     name: expense
 
+
+- name: Import nodejs role for newrelic
+  ansible.builtin.import_role:
+    name: newrelic
+    tasks_from: nodejs.yml
+
+
 - name: Import App pre-requisties
   ansible.builtin.import_role:
     name: common
