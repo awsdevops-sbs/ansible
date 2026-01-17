@@ -15,32 +15,31 @@
      name: nodejs
      state: installed
 
-- name: Add Application User
-  ansible.builtin.user:
-    name: expense
+-  name: Add Application User
+   ansible.builtin.user:
+     name: "{{ app_user }}"
 
 
-- name: Import nodejs role for newrelic
-  ansible.builtin.import_role:
-    name: newrelic
-    tasks_from: nodejs
 
 
-- name: Import App pre-requisties
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: app-pre-req
-
-- name: Install NPM.
-  community.general.npm:
-    path: "{{ app_loc }}"
-    state: latest
 
 
-- name: Copy Backend service file
-  ansible.builtin.template:
-    src: backend.service
-    dest: /etc/systemd/system/backend.service
+-  name: Import App pre-requisties
+   ansible.builtin.import_role:
+     name: common
+     tasks_from: app-pre-req
+
+#- name: Install NPM.
+#  community.general.npm:
+#    path: "{{ app_loc }}"
+#    state: latest
+
+-  name: Copy Backend service file
+   ansible.builtin.template:
+     src: backend.service
+     dest: /etc/systemd/system/backend.service
+
+
 
 
 
@@ -65,6 +64,12 @@
     login_password: ExpenseApp@1
     #login_password: "{{ mysql_password }}"
     login_host: mysql-dev.awsdevops.sbs
+
+
+- name: Import nodejs role for newrelic
+  ansible.builtin.import_role:
+    name: newrelic
+    tasks_from: nodejs
 
 - name: Start backend service
   ansible.builtin.systemd_service:
