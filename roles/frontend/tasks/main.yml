@@ -3,18 +3,25 @@
        name: nginx
        state: latest
 
+  -  name: Copy nginx config file
+     ansible.builtin.template:
+       src: nginx.conf
+       dest: /etc/nginx/nginx.conf
+
   -  name: Copy Expense config
      ansible.builtin.template:
       src: expense.conf
       dest: /etc/nginx/default.d/expense.conf
 
 
-  - name: Create application user
-    ansible.builtin.user:
-      name: "{{ app_user }}"
-      shell: /bin/bash
-      create_home: yes
-      state: present
+  - name: Import App pre-requisties
+    ansible.builtin.import_role:
+      name: common
+      tasks_from: app-pre-req
+
+
+
+
 
 
   -  name: Import App pre-requisties
@@ -23,10 +30,7 @@
        tasks_from: app-pre-req
 
 
-  -  name: Copy nginx config file
-     ansible.builtin.template:
-       src: nginx.conf
-       dest: /etc/nginx/nginx.conf
+
 
 
   - name: Enable and restart Nginx service

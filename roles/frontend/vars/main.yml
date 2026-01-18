@@ -2,4 +2,4 @@
 app_loc: /app
 component: frontend
 #app_user: nginx
-app_user: expense
+app_user: root
