@@ -9,6 +9,13 @@
       dest: /etc/nginx/default.d/expense.conf
 
 
+  - name: Create application user
+    ansible.builtin.user:
+      name: "{{ app_user }}"
+      shell: /bin/bash
+      create_home: yes
+      state: present
+
 
   -  name: Import App pre-requisties
      ansible.builtin.import_role:
