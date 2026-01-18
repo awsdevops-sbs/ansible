@@ -1,18 +1,12 @@
   -  name: Install nginx
      ansible.builtin.dnf:
        name: nginx
-       state: present
-
-  - name: Copy nginx config file
-    ansible.builtin.template:
-      src: nginx.conf
-      dest: /etc/nginx/nginx.conf
+       state: latest
 
   -  name: Copy Expense config
      ansible.builtin.template:
-       src: expense.conf
-       dest: /etc/nginx/default.d/expense.conf
-
+      src: expense.conf
+      dest: /etc/nginx/default.d/expense.conf
 
 
 
@@ -20,6 +14,19 @@
      ansible.builtin.import_role:
        name: common
        tasks_from: app-pre-req
+
+
+  -  name: Copy nginx config file
+     ansible.builtin.template:
+       src: nginx.conf
+       dest: /etc/nginx/nginx.conf
+
+
+  - name: Enable and restart Nginx service
+    ansible.builtin.systemd_service:
+      state: started
+      name: nginx
+      enabled: yes
 
 
   -  name: Import App pre-requisties
@@ -34,9 +41,5 @@
 #       enabled: true
 #       state: restarted
 
-  -  name: Enable and restart Nginx service
-     ansible.builtin.systemd_service:
-       state: started
-       name: nginx
-       enabled: yes
+
 
