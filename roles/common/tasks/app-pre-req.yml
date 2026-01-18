@@ -3,12 +3,15 @@
     path: "{{ app_loc }}"
     state: absent
 
+
+
 - name: Create App Directory
   ansible.builtin.file:
     path: "{{ app_loc }}"
     state: directory
     owner: "{{ app_user }}"
     group: "{{ app_user }}"
+    mode: '0755'
 
 - name: Download and extract the  app content
   ansible.builtin.unarchive:
