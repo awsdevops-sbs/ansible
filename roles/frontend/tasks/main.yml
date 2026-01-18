@@ -22,17 +22,6 @@
 
 
 
-
-
-  -  name: Import App pre-requisties
-     ansible.builtin.import_role:
-       name: common
-       tasks_from: app-pre-req
-
-
-
-
-
   - name: Enable and restart Nginx service
     ansible.builtin.systemd_service:
       state: started
