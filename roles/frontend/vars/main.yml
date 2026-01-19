@@ -1,5 +1,7 @@
-#app_loc: /usr/share/nginx/html
-app_loc: /app
+app_loc: /usr/share/nginx/html
+#app_loc: /app
 component: frontend
 #app_user: nginx
 app_user: root
+
+
