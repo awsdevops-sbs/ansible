@@ -24,4 +24,4 @@ ansible-playbook -i "$component-$env.awsdevops.sbs," \
   -e env=$env \
   -e mysql_password=ExpenseApp@1 \
   expense.yml  \
-   -e '~@secret.json'
+   -e '@secret.json'
