@@ -13,7 +13,7 @@ component=$1
 #  -e mysql_password=ExpenseApp@1 \
 #  expense.yml
 
-
+rm -f ~/*.json
 ansible-playbook get-secrets.yml  \
 -e role_name="$component" \
   -e env=$env \
@@ -22,6 +22,16 @@ ansible-playbook get-secrets.yml  \
 ansible-playbook -i "$component-$env.awsdevops.sbs," \
   -e role_name="$component" \
   -e env=$env \
-  -e mysql_password=ExpenseApp@1 \
-  expense.yml  \
-   -e '@secret.json'
+   expense.yml  \
+   -e '@~/secret.json'
+
+
+
+
+   #ansible-playbook get-secrets.yml -e vault_token=$vault_token -e env=$env -e role_name=$component
+
+
+
+
+
+
