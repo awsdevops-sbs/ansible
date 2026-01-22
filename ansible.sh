@@ -17,6 +17,8 @@ export PYTHONPATH="${HOME}/.local/lib/python3.13/site-packages:${PYTHONPATH}"
 #  -e env=$env \
 #  -e mysql_password=ExpenseApp@1 \
 #  expense.yml
+
+
 export ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3.9
 rm -f ~/*.json
 ansible-playbook get-secrets.yml  \
