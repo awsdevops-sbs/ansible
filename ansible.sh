@@ -31,8 +31,11 @@ ansible-playbook -i "$component-$env.awsdevops.sbs," \
   -e env=$env \
    expense.yml  \
    -e vault_token=$vault_token \
-   -e '@~/secret.json' \
-   -e @~/app.json
+   -e '@~/secret.json'
+
+
+
+
 
 
 
