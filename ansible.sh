@@ -12,7 +12,7 @@ component=$1
 #  -e env=$env \
 #  -e mysql_password=ExpenseApp@1 \
 #  expense.yml
-
+export ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3.9
 rm -f ~/*.json
 ansible-playbook get-secrets.yml  \
 -e role_name="$component" \
