@@ -27,13 +27,16 @@ ansible-playbook get-secrets.yml  \
   -e env=$env \
   -e vault_token=$vault_token
 
-ansible-playbook -i "$component-$env.awsdevops.sbs," \
-  -e role_name="$component" \
-  -e env=$env \
-   expense.yml  \
-   -e vault_token=$vault_token \
-   -e '@~/secret.json'  \
-   -e '@~/app.json'
+
+  ansible-playbook -i $component-$env.awsdevops.sbs, -e env=$env -e role_name=$component expense.yml -e '@~/secrets.json'
+
+#ansible-playbook -i "$component-$env.awsdevops.sbs," \
+#  -e role_name="$component" \
+#  -e env=$env \
+#   expense.yml  \
+#   -e vault_token=$vault_token \
+#   -e '@~/secret.json'  \
+#   -e '@~/app.json'
 
 
 
