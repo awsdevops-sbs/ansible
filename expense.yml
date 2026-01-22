@@ -2,9 +2,9 @@
    hosts: all
    vars:
      # Map Vault KV V2 fields to Ansible connection variables
-     ansible_user: "{{ data.data.ansible_username }}"
-     ansible_password: "{{ data.data.ansible_password }}"
-     ansible_become_password: "{{ data.data.ansible_password }}"
+     ansible_user: "{{data.data.ansible_username}}"
+     ansible_password: "{{data.data.ansible_password}}"
+     ansible_become_password: "{{data.data.ansible_password}}"
    become: yes
    roles:
      - "{{role_name}}"
