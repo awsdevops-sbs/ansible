@@ -1,6 +1,11 @@
 #export ANSIBLE_HOST_KEY_CHECKING=False
 component=$1
 
+/usr/bin/python3.13 -m pip install --user hvac
+
+# 2. Add the user-space site-packages to PYTHONPATH so Ansible can find them
+export PYTHONPATH="${HOME}/.local/lib/python3.13/site-packages:${PYTHONPATH}"
+
 #env=$2
 #ansible-playbook  -i "$component-dev.awsdevops.sbs," -e ansible_username=ec2-user -e ansible_password=DevOps321  -e role_name="$component" -e env=dev expense.yml
 
