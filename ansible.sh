@@ -21,6 +21,7 @@ export PYTHONPATH="${HOME}/.local/lib/python3.13/site-packages:${PYTHONPATH}"
 
 export ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3.9
 rm -f ~/*.json
+
 ansible-playbook get-secrets.yml  \
 -e role_name="$component" \
   -e env=$env \
@@ -31,7 +32,8 @@ ansible-playbook -i "$component-$env.awsdevops.sbs," \
   -e env=$env \
    expense.yml  \
    -e vault_token=$vault_token \
-   -e '@~/secret.json'
+   -e '@~/secret.json'  \
+   -e '@~/app.json'
 
 
 
