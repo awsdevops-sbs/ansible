@@ -20,10 +20,6 @@
      name: "{{ app_user }}"
 
 
-
-
-
-
 -  name: Import App pre-requisties
    ansible.builtin.import_role:
      name: common
