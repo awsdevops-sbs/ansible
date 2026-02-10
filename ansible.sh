@@ -7,10 +7,10 @@ component=$1
 export PYTHONPATH="${HOME}/.local/lib/python3.13/site-packages:${PYTHONPATH}"
 
 #env=$2
-#ansible-playbook  -i "$component-dev.awsdevops.sbs," -e ansible_username=ec2-user -e ansible_password=DevOps321  -e role_name="$component" -e env=dev expense.yml
+#ansible-playbook  -i "$component-dev.awsdevops16297.sbs," -e ansible_username=ec2-user -e ansible_password=DevOps321  -e role_name="$component" -e env=dev expense.yml
 
 
-#ansible-playbook -i "$component-$env.awsdevops.sbs," \
+#ansible-playbook -i "$component-$env.awsdevops16297.sbs," \
 #  -e ansible_user=ec2-user \
 #  -e ansible_password=DevOps321 \
 #  -e role_name="$component" \
@@ -28,9 +28,9 @@ ansible-playbook get-secrets.yml  \
   -e vault_token=$vault_token
 
 
-  ansible-playbook -i $component-$env.awsdevops.sbs,  -e env=$env -e role_name=$component expense.yml -e '@~/secret.json' -e '@~/app.json'
+  ansible-playbook -i $component-$env.awsdevops16297.sbs,  -e env=$env -e role_name=$component expense.yml -e '@~/secret.json' -e '@~/app.json'
 
-#ansible-playbook -i "$component-$env.awsdevops.sbs," \
+#ansible-playbook -i "$component-$env.awsdevops16297.sbs," \
 #  -e role_name="$component" \
 #  -e env=$env \
 #   expense.yml  \

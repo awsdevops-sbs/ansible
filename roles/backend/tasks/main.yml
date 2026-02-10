@@ -63,7 +63,7 @@
     login_user: root
     #login_password: ExpenseApp@1
     login_password: "{{ mysql_password }}"
-    login_host: mysql-dev.awsdevops.sbs
+    login_host: mysql-dev.awsdevops16297.sbs
 
 
 - name: Import nodejs role for newrelic
