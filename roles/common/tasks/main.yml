@@ -1,7 +1,11 @@
 - name: Set prompt with component
   ansible.builtin.shell: set-prompt {{ component }} - {{ env }}
 
-- name: import node_exporter
+- name: install node_exporter
   ansible.builtin.import_role:
     name: prometheus
     tasks_from: node_exporter
+
+- name: install Logstash
+  ansible.builtin.import_role:
+    name: logstash
