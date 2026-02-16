@@ -4,4 +4,5 @@ component: frontend
 #app_user: nginx
 app_user: root
 log_file: /var/log/nginx/access.log
+logstash_config_needed: false
 
