@@ -28,7 +28,17 @@ ansible-playbook get-secrets.yml  \
   -e vault_token=$vault_token
 
 
-  ansible-playbook -i $component-$env.awsdevops16297.sbs,  -e env=$env -e role_name=$component expense.yml -e '@~/secret.json' -e '@~/app.json' -e '@~/newrelic_key.json'
+  #ansible-playbook -i $component-$env.awsdevops16297.sbs,  -e env=$env -e role_name=$component expense.yml -e '@~/secret.json' -e '@~/app.json' -e '@~/newrelic_key.json'
+
+ansible-playbook -i "$component-$env.awsdevops16297.sbs," \
+-u ec2-user \
+expense.yml \
+-e env=$env \
+-e role_name=$component \
+-e "@~/secret.json" \
+-e "@~/app.json" \
+-e "@~/newrelic_key.json"
+
 
 #ansible-playbook -i "$component-$env.awsdevops16297.sbs," \
 #  -e role_name="$component" \
