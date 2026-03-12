@@ -51,15 +51,25 @@
     name: mysql
     state: installed
 
+#- name: Load Schema
+#  community.mysql.mysql_db:
+#    state: import
+#    name: all
+#    target: /app/schema/backend.sql
+#    login_user: root
+#    #login_password: ExpenseApp@1
+#    login_password: "{{ mysql_password }}"
+#    login_host: mysql-dev.awsdevops16297.sbs
+
 - name: Load Schema
   community.mysql.mysql_db:
     state: import
     name: all
     target: /app/schema/backend.sql
-    login_user: root
+    login_user: "{{ rds_username }}"
     #login_password: ExpenseApp@1
-    login_password: "{{ mysql_password }}"
-    login_host: mysql-dev.awsdevops16297.sbs
+    login_password: "{{ rds_password }}"
+    login_host: "{{ rds_endpoint }}"
 
 
 - name: Import nodejs role for newrelic
