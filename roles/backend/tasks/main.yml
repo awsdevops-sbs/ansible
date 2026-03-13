@@ -68,6 +68,7 @@
     target: /app/schema/backend.sql
     login_user: "{{ rds_username }}"
     #login_password: ExpenseApp@1
+
     login_password: "{{ rds_password }}"
     login_host: "{{ rds_endpoint }}"
 
