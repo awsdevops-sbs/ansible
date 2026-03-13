@@ -4,13 +4,15 @@ Description = Backend Service
 [Service]
 User={{ app_user }}
 WorkingDirectory=/app
-
+Restart=always
+RestartSec=5
 Environment=DB_HOST={{ rds_endpoint }}
 Environment=NEW_RELIC_APP_NAME=backend
 Environment=NEW_RELIC_LICENSE_KEY={{ NEW_RELIC_KEY }}
 ExecStart=/bin/node -r newrelic /app/index.js
 SyslogIdentifier=backend
-
+StandardOutput=syslog
+StandardError=syslog
 [Install]
 WantedBy=multi-user.target
 
