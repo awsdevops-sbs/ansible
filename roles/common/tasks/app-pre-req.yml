@@ -24,6 +24,7 @@
 - name: Download and Extract App Content - From Artifactory
   ansible.builtin.unarchive:
     src: http://{{artifactory_user}}:{{artifactory_password}}@artifactory-internal.awsdevops16297.sbs:8081/artifactory/expense-{{ component }}/{{App_VERSION}}.zip
+
     dest: "{{ app_loc }}"
     remote_src: yes
     owner: "{{app_user}}"
