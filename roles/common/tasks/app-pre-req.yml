@@ -13,10 +13,18 @@
     group: "{{ app_user }}"
     mode: '0755'
 
-- name: Download and extract the  app content
+#- name: Download and extract the  app content
+#  ansible.builtin.unarchive:
+#    src: https://expense-artifacts.s3.amazonaws.com/expense-{{ component }}-v2.zip
+#    dest: "{{ app_loc }}"
+#    remote_src: yes
+#    owner: "{{ app_user }}"
+#    group: "{{ app_user }}"
+
+- name: Download and Extract App Content - From Artifactory
   ansible.builtin.unarchive:
-    src: https://expense-artifacts.s3.amazonaws.com/expense-{{ component }}-v2.zip
+    src: http://{{artifactory_user}}:{{artifactory_password}}@artifactory-internal.awsdevops16297.sbs:8081/artifactory/expense-{{ component }}/{{App_VERSION}}.zip
     dest: "{{ app_loc }}"
     remote_src: yes
-    owner: "{{ app_user }}"
-    group: "{{ app_user }}"
+    owner: "{{app_user}}"
+    group: "{{app_user}}"

@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  frontend:
+  expense-frontend:
     group: defaultGroup
     materials:
       git-5766e3f:
