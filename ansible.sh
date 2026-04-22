@@ -30,9 +30,16 @@ ansible-playbook get-secrets.yml  \
 
   #ansible-playbook -i $component-$env.awsdevops16297.sbs,  -e env=$env -e role_name=$component expense.yml -e '@~/secret.json' -e '@~/app.json' -e '@~/newrelic_key.json'
 
-aws ec2 describe-istances --filters "Name=tag:Name,Values=$component-$env" Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].PrivateIpAddress" --output text >inv
+aws ec2 describe-instances --filters "Name=tag:Name,Values=$component-$env" Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].PrivateIpAddress" --output text >inv
 
 ansible-playbook -i inv  -e env=$env -e role_name=$component expense.yml -e '@~/secret.json'
+
+
+
+#aws ec2 describe-instances --filters Name=tag:Name,Values=$component-$env Name=instance-state-name,Values=running --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text >inv
+#ansible-playbook -i inv -e env=$env -e role_name=$component expense.yml -e '@~/secrets.json'
+
+
 
 #ansible-playbook -i "$component-$env.awsdevops16297.sbs," \
 #  -e role_name="$component" \
