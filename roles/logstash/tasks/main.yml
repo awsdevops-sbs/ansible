@@ -15,8 +15,6 @@
        dest: /etc/logstash/conf.d/logstash.conf
 
 
-
-
   -  name: Start logstash service
      ansible.builtin.systemd_service:
        state: started
