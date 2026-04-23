@@ -3,14 +3,15 @@ pipelines:
   expense-frontend:
     group: defaultGroup
     label_template: "${ENV:App_VERSION}"
-    environment_variables:
-        App_VERSION: " "
+
     materials:
       git-5766e3f:
         git: https://github.com/awsdevops-sbs/ansible.git
         shallow_clone: false
         auto_update: true
         branch: main
+        environment_variables:
+          App_VERSION: ""
     secure_variables:
       vault_token: AES:U0sg7KpcTxZAEdlnMlpDMA==:FxINJdICkPIxs4AVfMQTnnvCWikRpol5GDGrk6szHpg=
     stages:
