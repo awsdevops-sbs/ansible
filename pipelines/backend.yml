@@ -2,9 +2,9 @@ format_version: 10
 pipelines:
   expense-backend:
     group: defaultGroup
-    label_template: "${ENV:App_VERSION}"
+    label_template: "${ENV:APP_VERSION}"
     environment_variables:
-      App_VERSION: ""
+      APP_VERSION: ""
     materials:
       git-5766e3f:
         git: https://github.com/awsdevops-sbs/ansible.git
