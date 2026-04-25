@@ -1,4 +1,4 @@
 
 rsyslog_config_needed: false
-
+only_deployment: true
 

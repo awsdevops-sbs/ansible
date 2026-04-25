@@ -5,13 +5,14 @@
   ansible.builtin.import_role:
     name: prometheus
     tasks_from: node_exporter
+    when: not only_deployment | bool
 
 - name: install Logstash
   ansible.builtin.import_role:
     name: logstash
-  when: logstash_config_needed | bool
+  when: logstash_config_needed and not only_deployment| bool
 
 - name:  rsyslog Configuration
   ansible.builtin.import_role:
     name: rsyslog
-  when: rsyslog_config_needed | bool
+  when: rsyslog_config_needed and not only_deployment| bool
