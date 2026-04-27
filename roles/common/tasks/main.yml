@@ -1,19 +1,43 @@
-- name: Set prompt with component
-  ansible.builtin.shell: set-prompt {{ component }} - {{ env }}
-  when: not only_deployment | bool
+#- name: Set prompt with component
+#  ansible.builtin.shell: set-prompt {{ component }} - {{ env }}
+#  when: not only_deployment | bool
+#
+#- name: install node_exporter
+#  ansible.builtin.import_role:
+#    name: prometheus
+#    tasks_from: node_exporter
+#  when: not only_deployment | bool
+#
+#- name: install Logstash
+#  ansible.builtin.import_role:
+#    name: logstash
+#  when: logstash_config_needed and not only_deployment| bool
+#
+#- name:  rsyslog Configuration
+#  ansible.builtin.import_role:
+#    name: rsyslog
+#  when: rsyslog_config_needed and not only_deployment| bool
 
-- name: install node_exporter
+- name: Set prompt with component
+  ansible.builtin.shell: "set-prompt {{ component }} - {{ env }}"
+  when: not (only_deployment | bool)
+
+- name: Install node_exporter
   ansible.builtin.import_role:
     name: prometheus
     tasks_from: node_exporter
-  when: not only_deployment | bool
+  when: not (only_deployment | bool)
 
-- name: install Logstash
+- name: Install Logstash
   ansible.builtin.import_role:
     name: logstash
-  when: logstash_config_needed and not only_deployment| bool
+  when:
+    - logstash_config_needed | bool
+    - not (only_deployment | bool)
 
-- name:  rsyslog Configuration
+- name: Configure rsyslog
   ansible.builtin.import_role:
     name: rsyslog
-  when: rsyslog_config_needed and not only_deployment| bool
+  when:
+    - rsyslog_config_needed | bool
+    - not (only_deployment | bool)
