@@ -1,5 +1,6 @@
 - name: Set prompt with component
   ansible.builtin.shell: set-prompt {{ component }} - {{ env }}
+  when: not only_deployment | bool
 
 - name: install node_exporter
   ansible.builtin.import_role:
