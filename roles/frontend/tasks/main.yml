@@ -53,6 +53,12 @@
        name: {{ app_user }}
 
 
+  -  name: Import App Pre Requisites
+     ansible.builtin.import_role:
+       name: common
+       tasks_from: app-pre-req
+
+
   -  name: Copy Caddy config file
      ansible.builtin.template:
        src: Caddyfile
