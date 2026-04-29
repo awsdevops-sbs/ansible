@@ -14,7 +14,8 @@
 
      log {
         format json
-        output stdout
+        #output stdout
+        output file /var/log/frontend.log
       }
 
 }
