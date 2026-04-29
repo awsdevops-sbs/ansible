@@ -62,7 +62,7 @@
   -  name: Copy Caddy config file
      ansible.builtin.template:
        src: Caddyfile
-       dest: "{{app_loc}}/Caddyfile"
+       dest: {{app_loc}}/Caddyfile
 
   -  name: Create Caddy systemd service file
      ansible.builtin.template:
