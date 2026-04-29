@@ -75,4 +75,4 @@
        name: caddy
        enabled: true
        state: restarted
-       deamon_reload: true
+       daemon_reload: true
