@@ -1,45 +1,72 @@
-  -  name: Install nginx
-     ansible.builtin.dnf:
-       name: nginx
-       state: latest
-
-  -  name: Copy nginx config file
-     ansible.builtin.template:
-       src: nginx.conf
-       dest: /etc/nginx/nginx.conf
-
-  -  name: Copy Expense config
-     ansible.builtin.template:
-      src: expense.conf
-      dest: /etc/nginx/default.d/expense.conf
-
-
-  - name: Import App pre-requisties
-    ansible.builtin.import_role:
-      name: common
-      tasks_from: app-pre-req
-
-
-
-
-  - name: Enable and restart Nginx service
-    ansible.builtin.systemd_service:
-      state: started
-      name: nginx
-      enabled: yes
-
-
-  -  name: Import App pre-requisties
-     ansible.builtin.import_role:
-       name: newrelic
-       tasks_from: nginx
-
-
-#  -  name: Enable and restart Nginx service
-#     ansible.builtin.systemd_service:
+#  -  name: Install nginx
+#     ansible.builtin.dnf:
 #       name: nginx
-#       enabled: true
-#       state: restarted
+#       state: latest
+#
+#  -  name: Copy nginx config file
+#     ansible.builtin.template:
+#       src: nginx.conf
+#       dest: /etc/nginx/nginx.conf
+#
+#  -  name: Copy Expense config
+#     ansible.builtin.template:
+#      src: expense.conf
+#      dest: /etc/nginx/default.d/expense.conf
+#
+#
+#  - name: Import App pre-requisties
+#    ansible.builtin.import_role:
+#      name: common
+#      tasks_from: app-pre-req
+#
+#
+#  - name: Enable and restart Nginx service
+#    ansible.builtin.systemd_service:
+#      state: started
+#      name: nginx
+#      enabled: yes
+#
+#
+#  -  name: Import App pre-requisties
+#     ansible.builtin.import_role:
+#       name: newrelic
+#       tasks_from: nginx
+#
+#
+##  -  name: Enable and restart Nginx service
+##     ansible.builtin.systemd_service:
+##       name: nginx
+##       enabled: true
+##       state: restarted
+#
+#
+#
+
+  -  name: Install Caddy
+     ansible.builtin.get_url:
+       url: https://caddyserver.com/api/download?os=linux&arch=amd64
+       dest: /usr/bin/caddy
+       mode: '0755'
+
+  -  name: Create Caddy user and group
+     ansible.builtin.user:
+       name: {{ app_user }}
 
 
+  -  name: Copy Caddy config file
+     ansible.builtin.template:
+       src: Caddyfile
+       dest: "{{app_loc}}/Caddyfile"
 
+  -  name: Create Caddy systemd service file
+     ansible.builtin.template:
+       src: caddy.service
+       dest: /etc/systemd/system/caddy.service
+       mode: '0644'
+
+  -  name: Enable and restart Caddy service
+     ansible.builtin.systemd_service:
+       name: caddy
+       enabled: true
+       state: restarted
+       deamon_reload: true

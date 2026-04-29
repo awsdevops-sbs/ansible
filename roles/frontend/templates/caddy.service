@@ -1,0 +1,14 @@
+[Unit]
+Description=Caddy Web Server
+After=network.target
+
+[Service]
+User={{app_user}}
+Group={{app_user}}
+ExecStart=/bin/caddy run --config /app/Caddyfile
+ExecReload=/bin/caddy reload --config /app/Caddyfile
+TimeoutStopSec=5s
+Restart=on-failure
+SyslogIdentifier={{component}}
+[Install]
+WantedBy=multi-user.target

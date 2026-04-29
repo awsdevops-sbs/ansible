@@ -1,8 +1,12 @@
-app_loc: /usr/share/nginx/html
-#app_loc: /app
+#app_loc: /usr/share/nginx/html
+app_loc: /app
 component: frontend
 #app_user: nginx
-app_user: root
-log_file: /var/log/nginx/access.log
+#app_user: root
+
+app_user: expense
+log_file: /var/log/frontend.log
+#log_file: /var/log/nginx/access.log
 logstash_config_needed: false
+rsyslog_config_needed: true
 

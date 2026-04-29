@@ -1,0 +1,15 @@
+{
+    servers {
+        metrics
+    }
+}
+
+:80 {
+    root * /app
+    file_server
+
+    reverse_proxy /api/* backend-{{ env }}.awsdevops16297.sbs:8080
+
+    respond /health "ok" 200
+
+}
