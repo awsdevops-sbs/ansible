@@ -13,9 +13,9 @@
     respond /health "ok" 200
 
      log {
-        output file /var/log/frontend.log
-        format json
 
+        format json
+                  output file /var/log/frontend.log
 
       }
 
