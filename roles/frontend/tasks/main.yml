@@ -50,7 +50,7 @@
 
   -  name: Create Caddy user and group
      ansible.builtin.user:
-       name: {{ app_user }}
+       name: "{{ app_user }}"
 
 
   -  name: Import App Pre Requisites
