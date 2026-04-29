@@ -8,5 +8,5 @@ app_user: expense
 log_file: /var/log/frontend.log
 #log_file: /var/log/nginx/access.log
 logstash_config_needed: false
-rsyslog_config_needed: false
+rsyslog_config_needed: true
 
