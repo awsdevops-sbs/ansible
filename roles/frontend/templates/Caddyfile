@@ -1,22 +1,23 @@
+
 {
-    servers {
-        metrics
-    }
+    metrics
 }
 
 :80 {
+
     root * /app
     file_server
 
-    reverse_proxy /api/* backend-{{ env }}.awsdevops16297.sbs:8080
+    handle /health {
+        respond "ok" 200
+    }
 
-    respond /health "ok" 200
+    handle_path /api/* {
+        reverse_proxy backend-{{ env }}.awsdevops16297.sbs:8080
+    }
 
-     log {
-
+    log {
         format json
-                  output stdout
-
-      }
-
+        output stdout
+    }
 }
