@@ -1,6 +1,7 @@
-
 {
-    metrics
+    servers {
+        metrics
+    }
 }
 
 :80 {
